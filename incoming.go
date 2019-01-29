@@ -66,6 +66,7 @@ type IncomingAttachment struct {
 	Title  string                    `json:"title,omitempty"`
 	Text   string                    `json:"text,omitempty"`
 	Color  string                    `json:"color,omitempty"`
+	Url    string                    `json:"url,omitempty"`
 	Images []IncomingAttachmentImage `json:"images,omitempty"`
 }
 

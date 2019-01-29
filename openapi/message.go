@@ -23,6 +23,7 @@ type MessageAttachment struct {
 	Title  *string                  `json:"title,omitempty"`
 	Text   *string                  `json:"text,omitempty"`
 	Color  *string                  `json:"color,omitempty"`
+	Url    *string                  `json:"url,omitempty"`
 	Images []MessageAttachmentImage `json:"images,omitempty"`
 }
 
@@ -160,9 +161,10 @@ func (m *MessageService) Delete(ctx context.Context, opt *MessageDeleteOptions) 
 }
 
 type MessageUpdateTextOptions struct {
-	VChannelID string     `json:"vchannel_id"`
-	Key        MessageKey `json:"message_key"`
-	Text       string     `json:"text"`
+	VChannelID  string              `json:"vchannel_id"`
+	Key         MessageKey          `json:"message_key"`
+	Text        string              `json:"text"`
+	Attachments []MessageAttachment `json:"attachments"` //TODO: shoud api support
 }
 
 //UpdateText implements `POST /message.update_text`
