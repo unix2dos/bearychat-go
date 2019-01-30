@@ -7,14 +7,14 @@ import (
 )
 
 type MessagePin struct {
-	ID         *string     `json:"id,omitempty"`
-	TeamID     *string     `json:"team_id,omitempty"`
-	UID        *string     `json:"uid,omitempty"`
-	VchannelID *string     `json:"vchannel_id,omitempty"`
-	MessageID  *string     `json:"message_id,omitempty"`
-	MessageKey *MessageKey `json:"message_key,omitempty"`
-	CreatedAt  *Time       `json:"create_at,omitempty"`
-	UpdatedAt  *Time       `json:"update_at,omitempty"`
+	ID         string     `json:"id,omitempty"`
+	TeamID     string     `json:"team_id,omitempty"`
+	UID        string     `json:"uid,omitempty"`
+	VchannelID string     `json:"vchannel_id,omitempty"`
+	MessageID  string     `json:"message_id,omitempty"`
+	MessageKey MessageKey `json:"message_key,omitempty"`
+	CreatedAt  Time       `json:"create_at,omitempty"`
+	UpdatedAt  Time       `json:"update_at,omitempty"`
 }
 
 type MessagePinService service

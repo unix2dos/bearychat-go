@@ -7,19 +7,19 @@ import (
 )
 
 type Channel struct {
-	ID            *string       `json:"id,omitempty"`
-	TeamID        *string       `json:"team_id,omitempty"`
-	VChannelID    *string       `json:"vchannel_id,omitempty"`
-	UserID        *string       `json:"uid,omitempty"`
-	Name          *string       `json:"name,omitempty"`
-	Type          *VChannelType `json:"type,omitempty"`
-	Private       *bool         `json:"private,omitempty"`
-	General       *bool         `json:"general,omitempty"`
-	Topic         *string       `json:"topic,omitempty"`
-	IsMember      *bool         `json:"is_member,omitempty"`
-	IsActive      *bool         `json:"is_active,omitempty"`
-	MemberUserIDs []string      `json:"member_uids,omitempty"`
-	LatestTS      *VChannelTS   `json:"latest_ts,omitempty"`
+	ID            string       `json:"id,omitempty"`
+	TeamID        string       `json:"team_id,omitempty"`
+	VChannelID    string       `json:"vchannel_id,omitempty"`
+	UserID        string       `json:"uid,omitempty"`
+	Name          string       `json:"name,omitempty"`
+	Type          VChannelType `json:"type,omitempty"`
+	Private       bool         `json:"private,omitempty"`
+	General       bool         `json:"general,omitempty"`
+	Topic         string       `json:"topic,omitempty"`
+	IsMember      bool         `json:"is_member,omitempty"`
+	IsActive      bool         `json:"is_active,omitempty"`
+	MemberUserIDs []string     `json:"member_uids,omitempty"`
+	LatestTS      VChannelTS   `json:"latest_ts,omitempty"`
 }
 
 type ChannelService service

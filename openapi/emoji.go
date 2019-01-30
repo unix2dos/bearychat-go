@@ -6,13 +6,13 @@ import (
 )
 
 type Emoji struct {
-	ID      *string `json:"id,omitempty"`
-	UserID  *string `json:"uid,omitempty"`
-	TeamID  *string `json:"team_id,omitempty"`
-	Name    *string `json:"name,omitempty"`
-	URL     *string `json:"url,omitempty"`
-	Created *Time   `json:"created,omitempty"`
-	Updated *Time   `json:"updated,omitempty"`
+	ID      string `json:"id,omitempty"`
+	UserID  string `json:"uid,omitempty"`
+	TeamID  string `json:"team_id,omitempty"`
+	Name    string `json:"name,omitempty"`
+	URL     string `json:"url,omitempty"`
+	Created Time   `json:"created,omitempty"`
+	Updated Time   `json:"updated,omitempty"`
 }
 
 type EmojiService service

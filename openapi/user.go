@@ -11,29 +11,29 @@ type UserType string
 type UserRole string
 
 type UserAvatar struct {
-	Small  *string `json:"small,omitempty"`
-	Medium *string `json:"medium,omitempty"`
-	Large  *string `json:"large,omitempty"`
+	Small  string `json:"small,omitempty"`
+	Medium string `json:"medium,omitempty"`
+	Large  string `json:"large,omitempty"`
 }
 
 type UserProfile struct {
-	Bio      *string `json:"bio,omitempty"`
-	Position *string `json:"position,omitempty"`
-	Skype    *string `json:"sykpe,omitempty"`
+	Bio      string `json:"bio,omitempty"`
+	Position string `json:"position,omitempty"`
+	Skype    string `json:"sykpe,omitempty"`
 }
 
 type User struct {
-	ID       *string      `json:"id,omitempty"`
-	TeamID   *string      `json:"team_id,omitempty"`
-	Email    *string      `json:"email,omitempty"`
-	Name     *string      `json:"name,omitempty"`
-	FullName *string      `json:"full_name,omitempty"`
-	Type     *UserType    `json:"type,omitempty"`
-	Role     *UserRole    `json:"role,omitempty"`
-	Avatars  *UserAvatar  `json:"avatars,omitempty"`
-	Profile  *UserProfile `json:"profile,omitempty"`
-	Inactive *bool        `json:"inactive,omitempty"`
-	Created  *Time        `json:"created,omitempty"`
+	ID       string      `json:"id,omitempty"`
+	TeamID   string      `json:"team_id,omitempty"`
+	Email    string      `json:"email,omitempty"`
+	Name     string      `json:"name,omitempty"`
+	FullName string      `json:"full_name,omitempty"`
+	Type     UserType    `json:"type,omitempty"`
+	Role     UserRole    `json:"role,omitempty"`
+	Avatars  UserAvatar  `json:"avatars,omitempty"`
+	Profile  UserProfile `json:"profile,omitempty"`
+	Inactive bool        `json:"inactive,omitempty"`
+	Created  Time        `json:"created,omitempty"`
 }
 
 type UserService service

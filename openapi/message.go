@@ -16,82 +16,82 @@ const (
 )
 
 type MessageAttachmentImage struct {
-	Url *string `json:"url,omitempty"`
+	Url string `json:"url,omitempty"`
 }
 
 type MessageAttachment struct {
-	Title  *string                  `json:"title,omitempty"`
-	Text   *string                  `json:"text,omitempty"`
-	Color  *string                  `json:"color,omitempty"`
-	Url    *string                  `json:"url,omitempty"`
+	Title  string                   `json:"title,omitempty"`
+	Url    string                   `json:"url,omitempty"`
+	Text   string                   `json:"text,omitempty"`
+	Color  string                   `json:"color,omitempty"`
 	Images []MessageAttachmentImage `json:"images,omitempty"`
 }
 
 type Reaction struct {
-	CreatedTS *VChannelTS `json:"created_ts,omitempty"`
-	Reaction  *string     `json:"reaction,omitempty"`
-	UIDs      []string    `json:"uids,omitempty"`
+	CreatedTS VChannelTS `json:"created_ts,omitempty"`
+	Reaction  string     `json:"reaction,omitempty"`
+	UIDs      []string   `json:"uids,omitempty"`
 }
 
 type Repost struct {
-	UID        *string         `json:"uid,omitempty"`
-	VchannelID *string         `json:"vchannel_id,omitempty"`
-	RobotID    *string         `json:"robot_id,omitempty"`
-	CreatedTS  *VChannelTS     `json:"created_ts,omitempty"`
-	MessageKey *MessageKey     `json:"message_key,omitempty"`
-	ID         *string         `json:"id,omitempty"`
-	TeamID     *string         `json:"team_id,omitempty"`
-	Subtype    *MessageSubtype `json:"subtype,omitempty"`
-	Text       *string         `json:"text,omitempty"`
+	UID        string         `json:"uid,omitempty"`
+	VchannelID string         `json:"vchannel_id,omitempty"`
+	RobotID    string         `json:"robot_id,omitempty"`
+	CreatedTS  VChannelTS     `json:"created_ts,omitempty"`
+	MessageKey MessageKey     `json:"message_key,omitempty"`
+	ID         string         `json:"id,omitempty"`
+	TeamID     string         `json:"team_id,omitempty"`
+	Subtype    MessageSubtype `json:"subtype,omitempty"`
+	Text       string         `json:"text,omitempty"`
 }
 
 type File struct {
-	Inactive    *bool       `json:"inactive,omitempty"`
-	Description *string     `json:"description,omitempty"`
-	Category    *string     `json:"category,omitempty"`
-	Deleted     *bool       `json:"deleted,omitempty"`
-	StarID      *string     `json:"star_id,omitempty"`
-	Key         *MessageKey `json:"key,omitempty"`
-	Updated     *Time       `json:"updated,omitempty"`
-	UID         *string     `json:"uid,omitempty"`
-	VCIDS       []string    `json:"vcids,omitempty"`
-	Name        *string     `json:"name,omitempty"`
-	Type        *string     `json:"type,omitempty"`
-	Created     *Time       `json:"created,omitempty"`
-	Source      *string     `json:"source,omitempty"`
-	Mime        *string     `json:"mime,omitempty"`
-	ImageURL    *string     `json:"image_url,omitempty"`
-	PreviewURL  *string     `json:"preview_url,omitempty"`
-	Title       *string     `json:"title,omitempty"`
-	ChannelID   *string     `json:"channel_id,omitempty"`
-	Summary     *string     `json:"summary,omitempty"`
-	IsPublic    *bool       `json:"is_public,omitempty"`
-	ID          *string     `json:"id,omitempty"`
-	URL         *string     `json:"url,omitempty"`
-	TeamID      *string     `json:"team_id,omitempty"`
+	Inactive    bool       `json:"inactive,omitempty"`
+	Description string     `json:"description,omitempty"`
+	Category    string     `json:"category,omitempty"`
+	Deleted     bool       `json:"deleted,omitempty"`
+	StarID      string     `json:"star_id,omitempty"`
+	Key         MessageKey `json:"key,omitempty"`
+	Updated     Time       `json:"updated,omitempty"`
+	UID         string     `json:"uid,omitempty"`
+	VCIDS       []string   `json:"vcids,omitempty"`
+	Name        string     `json:"name,omitempty"`
+	Type        string     `json:"type,omitempty"`
+	Created     Time       `json:"created,omitempty"`
+	Source      string     `json:"source,omitempty"`
+	Mime        string     `json:"mime,omitempty"`
+	ImageURL    string     `json:"image_url,omitempty"`
+	PreviewURL  string     `json:"preview_url,omitempty"`
+	Title       string     `json:"title,omitempty"`
+	ChannelID   string     `json:"channel_id,omitempty"`
+	Summary     string     `json:"summary,omitempty"`
+	IsPublic    bool       `json:"is_public,omitempty"`
+	ID          string     `json:"id,omitempty"`
+	URL         string     `json:"url,omitempty"`
+	TeamID      string     `json:"team_id,omitempty"`
 }
 
 type Message struct {
-	Repost          *Repost            `json:"repost,omitempty"`
-	Key             *MessageKey        `json:"key,omitempty"`
-	Updated         *Time              `json:"updated,omitempty"`
-	UID             *string            `json:"uid,omitempty"`
-	Created         *Time              `json:"created,omitempty"`
-	VchannelID      *string            `json:"vchannel_id,omitempty"`
-	ReferKey        *string            `json:"refer_key,omitempty"`
-	RobotID         *string            `json:"robot_id,omitempty"`
-	Edited          *bool              `json:"edited,omitempty"`
-	CreatedTS       *VChannelTS        `json:"created_ts,omitempty"`
-	PinID           *string            `json:"pin_id,omitempty"`
-	StarID          *string            `json:"star_id,omitempty"`
-	ID              *string            `json:"id,omitempty"`
-	TeamID          *string            `json:"team_id,omitempty"`
-	TextI18n        *map[string]string `json:"text_i18n,omitempty"`
-	Reactions       []Reaction         `json:"reactions,omitempty"`
-	Subtype         *MessageSubtype    `json:"subtype,omitempty"`
-	Text            *string            `json:"text,omitempty"`
-	DisableMarkdown *bool              `json:"disable_markdown,omitempty"`
-	File            *File              `json:"file,omitempty"`
+	Repost          Repost            `json:"repost,omitempty"`
+	Key             MessageKey        `json:"key,omitempty"`
+	Updated         Time              `json:"updated,omitempty"`
+	UID             string            `json:"uid,omitempty"`
+	Created         Time              `json:"created,omitempty"`
+	VchannelID      string            `json:"vchannel_id,omitempty"`
+	ReferKey        string            `json:"refer_key,omitempty"`
+	RobotID         string            `json:"robot_id,omitempty"`
+	Edited          bool              `json:"edited,omitempty"`
+	CreatedTS       VChannelTS        `json:"created_ts,omitempty"`
+	PinID           string            `json:"pin_id,omitempty"`
+	StarID          string            `json:"star_id,omitempty"`
+	ID              string            `json:"id,omitempty"`
+	TeamID          string            `json:"team_id,omitempty"`
+	TextI18n        map[string]string `json:"text_i18n,omitempty"`
+	Reactions       []Reaction        `json:"reactions,omitempty"`
+	Subtype         MessageSubtype    `json:"subtype,omitempty"`
+	Text            string            `json:"text,omitempty"`
+	DisableMarkdown bool              `json:"disable_markdown,omitempty"`
+	File            File              `json:"file,omitempty"`
 }
 
 type MessageService service

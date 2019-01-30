@@ -24,23 +24,23 @@ type MessageQuery struct {
 }
 
 type MessageQueryByLatest struct {
-	Limit *uint `json:"limit,omitempty"`
+	Limit int `json:"limit,omitempty"`
 }
 
 type MessageQueryBySince struct {
-	SinceKey *MessageKey `json:"key,omitempty"`
-	SinceTS  *VChannelTS `json:"ts,omitempty"`
-	Forward  *uint       `json:"forward,omitempty"`
-	Backward *uint       `json:"backward,omitempty"`
+	SinceKey MessageKey `json:"key,omitempty"`
+	SinceTS  VChannelTS `json:"ts,omitempty"`
+	Forward  int        `json:"forward,omitempty"`
+	Backward int        `json:"backward,omitempty"`
 }
 
 type MessageQueryByWindow struct {
-	FromKey  *MessageKey `json:"from_key,omitempty"`
-	ToKey    *MessageKey `json:"to_key,omitempty"`
-	FromTS   *VChannelTS `json:"from_ts,omitempty"`
-	ToTS     *VChannelTS `json:"to_ts,omitempty"`
-	Forward  *uint       `json:"forward,omitempty"`
-	Backward *uint       `json:"backward,omitempty"`
+	FromKey  MessageKey `json:"from_key,omitempty"`
+	ToKey    MessageKey `json:"to_key,omitempty"`
+	FromTS   VChannelTS `json:"from_ts,omitempty"`
+	ToTS     VChannelTS `json:"to_ts,omitempty"`
+	Forward  int        `json:"forward,omitempty"`
+	Backward int        `json:"backward,omitempty"`
 }
 
 type MessageQueryOptions struct {
