@@ -120,6 +120,7 @@ func (m *MessageService) Info(ctx context.Context, opt *MessageInfoOptions) (*Me
 type MessageCreateOptions struct {
 	VChannelID  string              `json:"vchannel_id"`
 	Text        string              `json:"text"`
+	Markdown    bool                `json:"markdown"`
 	Attachments []MessageAttachment `json:"attachments"`
 }
 
@@ -139,6 +140,20 @@ func (m *MessageService) Create(ctx context.Context, opt *MessageCreateOptions) 
 		return nil, resp, err
 	}
 	return &message, resp, nil
+}
+
+func (m *MessageService) CreateFast(opt *MessageCreateOptions) (*Message, error) {
+	if opt.Attachments == nil {
+		opt.Attachments = []MessageAttachment{}
+	}
+
+	var message Message
+	err := m.client.doFast("POST", "message.create", opt, &message)
+	if err != nil {
+		return nil, err
+	}
+
+	return &message, nil
 }
 
 type MessageDeleteOptions struct {

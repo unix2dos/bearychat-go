@@ -11,6 +11,8 @@ import (
 	"net/url"
 	"strings"
 	"time"
+
+	"github.com/valyala/fasthttp"
 )
 
 var defaultBaseURL = "https://api.bearychat.com/v1/"
@@ -20,6 +22,9 @@ type Client struct {
 	// HTTP client for calling the API.
 	// Use http.DefaultClient by default.
 	httpClient *http.Client
+
+	// Use fastClient
+	fastClient *fasthttp.Client
 
 	// Base URL for API requests. Defaults to BearyChat's OpenAPI host.
 	// BaseURL should always be specified with a trailing slash.
@@ -64,6 +69,13 @@ func NewClientWithHTTPClient(httpClient *http.Client) clientOpt {
 	}
 }
 
+// NewClientWithFastClient binds http client to client.
+func NewClientWithFastClient(fastClient *fasthttp.Client) clientOpt {
+	return func(c *Client) {
+		c.fastClient = fastClient
+	}
+}
+
 // NewClient constructs a client with given access token.
 // Other settings can set via clientOpt functions.
 func NewClient(token string, opts ...clientOpt) *Client {
@@ -77,6 +89,10 @@ func NewClient(token string, opts ...clientOpt) *Client {
 
 	if c.httpClient == nil {
 		c.httpClient = http.DefaultClient
+	}
+
+	if c.fastClient == nil {
+		c.fastClient = &fasthttp.Client{}
 	}
 
 	if c.BaseURL == nil {
@@ -170,6 +186,51 @@ func (c *Client) do(ctx context.Context, req *http.Request, v interface{}) (*htt
 	}
 
 	return resp, err
+}
+
+func (c *Client) doFast(requestMethod, apiMethod string, body interface{}, ret interface{}) (err error) {
+
+	m, err := url.Parse(apiMethod)
+	if err != nil {
+		return
+	}
+
+	u := c.BaseURL.ResolveReference(m)
+	q := u.Query()
+	q.Set("token", c.Token)
+	u.RawQuery = q.Encode()
+
+	buf := &bytes.Buffer{}
+	if body != nil {
+		err = json.NewEncoder(buf).Encode(body)
+		if err != nil {
+			return
+		}
+	}
+
+	req, resp := fasthttp.AcquireRequest(), fasthttp.AcquireResponse()
+	defer func() {
+		fasthttp.ReleaseRequest(req)
+		fasthttp.ReleaseResponse(resp)
+	}()
+
+	req.Header.SetMethod(requestMethod)
+	req.SetRequestURI(u.String())
+	req.SetBody(buf.Bytes())
+	if body != nil {
+		req.Header.Set("Content-Type", "application/json")
+	}
+
+	err = c.fastClient.Do(req, resp)
+	if err != nil {
+		return
+	}
+
+	if ret != nil {
+		err = json.NewDecoder(bytes.NewReader(resp.Body())).Decode(ret)
+	}
+
+	return
 }
 
 // ErrorResponse represents errors caused by an API request.
